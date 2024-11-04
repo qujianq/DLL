@@ -1,9 +1,9 @@
-/// <reference types="vitest/config" />
 import type { BuildOptions } from 'vite'
 import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite'
 
 const rollupOptions: BuildOptions['rollupOptions'] = {
@@ -15,6 +15,7 @@ const rollupOptions: BuildOptions['rollupOptions'] = {
     exports: 'named',
   },
 }
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), vueJsx(), UnoCSS()],
@@ -26,12 +27,17 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
+    coverage: {
+      provider: 'v8', // 或 'v8'
+      reporter: ['text', 'json', 'html'],
+      // include: ['src/**/*.ts', 'src/**/*.tsx'], // 指定你要测试的文件路径
+      // exclude: ['src/*.ts', 'src/utils/**'], // 指定你要忽略的文件路径
+    },
   },
-
   build: {
     rollupOptions,
     minify: 'terser', // boolean | 'terser' | 'esbuild'
-    sourcemap: false, // 输出单独 source文件
+    sourcemap: false, // 输出单独 source 文件
     reportCompressedSize: true, // 生成压缩大小报告
     cssCodeSplit: true,
     // 添加库模式配置
