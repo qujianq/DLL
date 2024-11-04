@@ -7,7 +7,7 @@
 <body>
     <p align="center">
         <div style="width:150px;margin:auto;">
-          <img src="example.jpg" alt="示例图片">
+          <img src="assets/example.jpg">
         </div>
     </p>
     <h1 align="center">SSY-UI-VITE</h1>
