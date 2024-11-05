@@ -1,5 +1,5 @@
 import { defineComponent, createVNode } from "vue";
-const version = "2.0.0";
+const version = "1.0.0";
 const componentPrefix = "S";
 function withInstall(options) {
   options.install = (app) => {
